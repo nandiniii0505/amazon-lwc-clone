@@ -1,4 +1,5 @@
 # 🛒 Amazon.in Marketplace Clone - Salesforce LWC
+🌐 **Live Demo:** Check out the live site here: https://nandiniii-dev-ed.develop.my.site.com/
 
 A comprehensive, fully functional e-commerce marketplace web application modeled after Amazon.in, built natively using **Salesforce Lightning Web Components (LWC)**, custom Apex controllers, and Lightning Data Services. This project implements advanced UI/UX patterns, real-time modal interactions, dynamic location tracking, and responsive e-commerce workflows.
 
