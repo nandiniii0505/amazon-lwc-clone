@@ -1,0 +1,626 @@
+/* General Base Styling */
+.amazon-container {
+    font-family: Arial, sans-serif;
+    background-color: #eaeded;
+    color: #0f1111;
+    margin: 0;
+    padding: 0;
+}
+
+/* Desktop Header */
+.amazon-header {
+    background-color: #131921;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 15px;
+}
+
+.amazon-logo {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: -1px;
+}
+
+.logo-accent {
+    color: #ff9900;
+}
+
+.nav-location {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+}
+
+.location-sub {
+    color: #ccc;
+}
+
+.location-main {
+    font-weight: bold;
+}
+
+.nav-fill {
+    flex-grow: 1;
+}
+
+.search-box {
+    display: flex;
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 3px solid transparent;
+}
+
+.search-box:focus-within {
+    border-color: #febd69;
+}
+
+.category-select {
+    background: #f3f3f3;
+    border: none;
+    padding: 10px;
+    font-size: 12px;
+    color: #555;
+    border-right: 1px solid #ddd;
+    outline: none;
+}
+
+.search-input {
+    flex-grow: 1;
+    border: none;
+    padding: 10px;
+    font-size: 14px;
+    outline: none;
+}
+
+.search-btn {
+    background: #febd69;
+    border: none;
+    padding: 0 15px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.line-1 {
+    font-size: 11px;
+    color: #ccc;
+}
+
+.line-2 {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.cart-btn {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+}
+
+.cart-count {
+    position: absolute;
+    top: -2px;
+    left: 10px;
+    color: #f08804;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Sub Navigation */
+.amazon-subnav {
+    background: #232f3e;
+    color: #fff;
+    padding: 8px 20px;
+    display: flex;
+    gap: 20px;
+    font-size: 14px;
+    align-items: center;
+    overflow-x: auto;
+}
+
+.highlight-deal {
+    color: #ff9900;
+    font-weight: bold;
+}
+
+/* Main Body Layout */
+.main-body {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+}
+
+.filter-sidebar {
+    width: 220px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 4px;
+    height: fit-content;
+}
+
+.filter-sidebar h3 {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.filter-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.filter-sidebar li {
+    padding: 6px 0;
+    font-size: 14px;
+    cursor: pointer;
+    color: #007185;
+}
+
+.filter-sidebar li:hover {
+    text-decoration: underline;
+}
+
+.active-cat {
+    font-weight: bold;
+    color: #ff9900 !important;
+}
+
+.catalog-content {
+    flex-grow: 1;
+}
+
+.results-header h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+/* Product Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.product-card {
+    background: #fff;
+    border-radius: 4px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.product-card:hover {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.img-container {
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.img-container img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.badge-wrapper {
+    margin-bottom: 5px;
+}
+
+.badge {
+    background: #cc0c39;
+    color: #fff;
+    font-size: 10px;
+    padding: 3px 6px;
+    border-radius: 2px;
+    font-weight: bold;
+}
+
+.badge.best-seller {
+    background: #e77600;
+}
+
+.product-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #0f1111;
+    margin-bottom: 8px;
+    height: 38px;
+    overflow: hidden;
+}
+
+.rating-row {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.stars {
+    color: #de7921;
+}
+
+.rating-count {
+    color: #007185;
+}
+
+.price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    margin-bottom: 12px;
+}
+
+.currency {
+    font-size: 12px;
+    position: relative;
+    top: -4px;
+}
+
+.price {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.mrp {
+    font-size: 12px;
+    color: #565959;
+    text-decoration: line-through;
+}
+
+.discount {
+    font-size: 12px;
+    color: #cc0c39;
+}
+
+.add-to-cart-btn {
+    background: #ffd814;
+    border: 1px solid #fcd200;
+    border-radius: 20px;
+    padding: 8px 0;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.2s;
+}
+
+.add-to-cart-btn:hover {
+    background: #f7ca00;
+}
+
+/* Modals General Style */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.auth-modal-content, .cart-modal-content {
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 90%;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #565959;
+}
+
+/* Auth Modal Specifics */
+.auth-tabs {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.auth-tab {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #565959;
+}
+
+.auth-tab.active {
+    color: #ff9900;
+    border-bottom: 2px solid #ff9900;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.auth-form label {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.auth-input {
+    padding: 10px;
+    border: 1px solid #a6a6a6;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+}
+
+.auth-input:focus {
+    border-color: #e77600;
+    box-shadow: 0 0 3px 2px rgba(228, 121, 17, 0.5);
+}
+
+.auth-continue-btn {
+    background: #ffd814;
+    border: 1px solid #fcd200;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Cart & Payment Options Flow Styling */
+.cart-summary-box {
+    background: #f8f9fa;
+    padding: 12px;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+.cart-items-preview {
+    background: #f8f9fa;
+    padding: 12px;
+    border-radius: 6px;
+    margin-top: 10px;
+    font-size: 13px;
+    color: #333;
+    line-height: 1.4;
+}
+
+.payment-options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    max-height: 240px;
+    overflow-y: auto;
+}
+
+.payment-option-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #f8f9fa;
+    border: 1px solid #d5d9d9;
+    padding: 10px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.payment-option-item:hover {
+    background: #f0f2f2;
+    border-color: #007185;
+}
+
+.pay-icon {
+    font-size: 20px;
+}
+
+.payment-option-item b {
+    font-size: 13px;
+    color: #0f1111;
+}
+
+.pay-sub {
+    font-size: 11px;
+    color: #565959;
+    margin: 2px 0 0 0;
+}
+
+/* Mobile Responsive Specific Styles */
+.mobile-top-bar {
+    display: none;
+}
+
+.mobile-bottom-nav {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .desktop-only {
+        display: none !important;
+    }
+
+    .mobile-top-bar {
+        display: block;
+        background: linear-gradient(to bottom, #84d8e3, #51c4d4);
+        padding: 8px 12px;
+    }
+
+    .mobile-header-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+    }
+
+    .mobile-logo {
+        font-size: 22px;
+        font-weight: bold;
+        color: #131921;
+    }
+
+    .mobile-header-right {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .mobile-top-bar .search-box {
+        display: flex;
+        align-items: center;
+        background: #fff;
+        border-radius: 8px;
+        padding: 6px 10px;
+        border: 1px solid #a6a6a6;
+    }
+
+    .search-icon-left {
+        margin-right: 8px;
+        color: #555;
+    }
+
+    .search-cam-icon {
+        margin-left: 8px;
+        color: #007185;
+    }
+
+    .main-body {
+        display: block !important;
+        padding: 8px;
+        padding-bottom: 65px;
+    }
+
+    .product-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .product-card {
+        display: flex;
+        flex-direction: row;
+        background: #fff;
+        border-bottom: 1px solid #e7e7e7;
+        padding: 10px;
+        width: 100% !important;
+    }
+
+    .product-card .img-container {
+        width: 110px;
+        height: 110px;
+        flex-shrink: 0;
+        margin-bottom: 0;
+    }
+
+    .product-card .img-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .product-info {
+        padding-left: 10px;
+        flex-grow: 1;
+    }
+
+    .product-title {
+        font-size: 13px;
+        line-height: 1.3;
+        height: 34px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .price-row {
+        font-size: 16px;
+        margin-bottom: 6px;
+    }
+
+    .add-to-cart-btn {
+        margin-top: 4px;
+        padding: 5px 10px;
+        font-size: 12px;
+        background: #ffd814;
+        border: 1px solid #fcd200;
+        border-radius: 20px;
+        width: 120px;
+    }
+
+    .mobile-bottom-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        border-top: 1px solid #ddd;
+        height: 55px;
+        justify-content: space-around;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .nav-bar-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 10px;
+        color: #333;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .b-icon {
+        font-size: 18px;
+        margin-bottom: 2px;
+    }
+
+    .b-badge {
+        position: absolute;
+        top: -2px;
+        right: 4px;
+        background: #ffa41c;
+        color: #000;
+        font-size: 9px;
+        font-weight: bold;
+        padding: 1px 4px;
+        border-radius: 50%;
+    }
+}

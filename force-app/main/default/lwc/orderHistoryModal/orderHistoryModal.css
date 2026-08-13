@@ -1,0 +1,206 @@
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+}
+
+.order-modal-content {
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    width: 850px;
+    max-width: 95%;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    font-family: Arial, sans-serif;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 26px;
+    cursor: pointer;
+    color: #565959;
+}
+
+.order-modal-content h2 {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 15px;
+    color: #0f1111;
+}
+
+.order-tabs {
+    display: flex;
+    gap: 25px;
+    border-bottom: 1px solid #d5d9d9;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.order-tab {
+    padding-bottom: 8px;
+    cursor: pointer;
+    color: #007185;
+}
+
+.order-tab.active {
+    font-weight: bold;
+    color: #0f1111;
+    border-bottom: 3px solid #e77600;
+}
+
+.order-search-box {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.order-search-input {
+    flex-grow: 1;
+    padding: 8px 12px;
+    border: 1px solid #888;
+    border-radius: 4px;
+    outline: none;
+}
+
+.order-search-btn {
+    background: #ffd814;
+    border: 1px solid #fcd200;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.order-card-container {
+    border: 1px solid #d5d9d9;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.order-header-strip {
+    background: #f0f2f2;
+    padding: 12px 15px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #565959;
+    border-bottom: 1px solid #d5d9d9;
+}
+
+.order-header-info {
+    display: flex;
+    gap: 30px;
+}
+
+.order-id-right {
+    text-align: right;
+}
+
+.order-id-right a {
+    color: #007185;
+    text-decoration: none;
+}
+
+.order-id-right a:hover {
+    text-decoration: underline;
+    color: #c45500;
+}
+
+.order-body-strip {
+    padding: 15px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.order-img-box {
+    width: 90px;
+    height: 90px;
+    flex-shrink: 0;
+}
+
+.order-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.order-desc-box {
+    flex-grow: 1;
+}
+
+.order-desc-box h4 {
+    font-size: 14px;
+    color: #007185;
+    margin-bottom: 4px;
+    cursor: pointer;
+}
+
+.delivered-status {
+    color: #007600;
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 2px;
+}
+
+.sub-text {
+    font-size: 12px;
+    color: #565959;
+    margin-bottom: 10px;
+}
+
+.buy-again-btn {
+    background: #ffd814;
+    border: 1px solid #fcd200;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: 500;
+    margin-right: 8px;
+}
+
+.track-btn {
+    background: #e3e6e6;
+    border: 1px solid #d5d9d9;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.order-action-box {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 180px;
+}
+
+.action-link-btn {
+    background: #fff;
+    border: 1px solid #d5d9d9;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+    text-align: center;
+}
+
+.action-link-btn:hover {
+    background: #f7fafa;
+    border-color: #007185;
+}

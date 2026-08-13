@@ -1,0 +1,45 @@
+<template>
+    <div class="cart-container">
+        <h2 class="cart-header">Shopping Cart</h2>
+
+        <template if:true={hasItems}>
+            <div class="cart-items-list">
+                <template for:each={cartItems} for:item="item">
+                    <div key={item.id} class="cart-item">
+                        <div class="item-img">
+                            <img src={item.image} alt={item.name} />
+                        </div>
+                        <div class="item-details">
+                            <h3 class="item-title">{item.name}</h3>
+                            <p class="item-price">₹{item.price}</p>
+                            <div class="quantity-controls">
+                                <button data-id={item.id} onclick={handleDecrement}>-</button>
+                                <span>{item.quantity}</span>
+                                <button data-id={item.id} onclick={handleIncrement}>+</button>
+                            </div>
+                        </div>
+                        <div class="item-total">
+                            <p>₹{item.totalPrice}</p>
+                            <button class="remove-btn" data-id={item.id} onclick={handleRemoveItem}>Remove</button>
+                        </div>
+                    </div>
+                </template>
+            </div>
+
+            <!-- CART SUMMARY -->
+            <div class="cart-summary">
+                <div class="summary-row">
+                    <span>Subtotal:</span>
+                    <span class="total-amount">₹{subtotal}</span>
+                </div>
+                <button class="checkout-btn" onclick={handleCheckout}>Proceed to Checkout</button>
+            </div>
+        </template>
+
+        <template if:false={hasItems}>
+            <div class="empty-cart">
+                <p>🛒 Your Shopping Cart is empty.</p>
+            </div>
+        </template>
+    </div>
+</template>

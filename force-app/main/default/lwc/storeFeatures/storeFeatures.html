@@ -1,0 +1,47 @@
+<template>
+    <div class="hub-container">
+        <div class="hub-card">
+            <h3 class="hub-title">⚡ Smart Store Hub</h3>
+            <p class="hub-sub">All-in-one shopping assistant & tracker tools.</p>
+            
+            <!-- Section 1: Price Drop Alert -->
+            <div class="hub-section">
+                <h4 class="section-heading">🔔 Live Price Drop Alert</h4>
+                <p class="section-text">Get notified instantly when prices drop on your wishlist.</p>
+                <div class="input-row">
+                    <input type="email" placeholder="Enter your email address" class="hub-input" value={userEmail} oninput={handleEmailChange}/>
+                    <button class="hub-btn alert-btn" onclick={handleSetAlert}>Notify Me</button>
+                </div>
+            </div>
+
+            <!-- Section 2: Quick Wishlist Saver -->
+            <div class="hub-section">
+                <h4 class="section-heading">⭐ Quick Wishlist Saver</h4>
+                <p class="section-text">Save items instantly for quick review.</p>
+                <div class="input-row">
+                    <input type="text" placeholder="Enter product name" class="hub-input" value={itemName} oninput={handleNameChange}/>
+                    <button class="hub-btn wish-btn" onclick={handleAddItem}>Save Item</button>
+                </div>
+
+                <!-- Saved List inside the same card -->
+                <template if:true={hasItems}>
+                    <ul class="saved-list">
+                        <template for:each={savedItems} for:item="item">
+                            <li key={item.id} class="saved-item">
+                                <span>{item.name}</span>
+                                <button class="delete-btn" data-id={item.id} onclick={handleDeleteItem}>✕</button>
+                            </li>
+                        </template>
+                    </ul>
+                </template>
+            </div>
+
+            <!-- Section 3: Eco-Friendly Tracker Badge -->
+            <div class="hub-section eco-section">
+                <h4 class="section-heading">🌱 Sustainability Tracker</h4>
+                <p class="section-text">Shipped with <b>100% Eco-Friendly Packaging</b>, cutting carbon impact by 40%.</p>
+            </div>
+        </div>
+    </div>
+    <c-amazon-footer></c-amazon-footer>
+</template>

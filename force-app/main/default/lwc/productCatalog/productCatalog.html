@@ -1,0 +1,326 @@
+<template>
+    <div class="amazon-container">
+        
+        <!-- MOBILE TOP BAR -->
+        <div class="mobile-top-bar">
+            <div class="mobile-header-row">
+                <span class="mobile-logo">amazon<span class="logo-accent">.in</span></span>
+                <div class="mobile-header-right">
+                    <span class="nav-text" onclick={openAuthModal}>Sign In ›</span>
+                    <div class="cart-btn" onclick={openCartModal}>
+                        <span class="cart-icon">🛒</span>
+                        <span class="cart-count">{cartCount}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="search-box">
+                <span class="search-icon-left">🔍</span>
+                <input type="text" placeholder="Search Amazon.in" class="search-input"/>
+                <span class="search-cam-icon">📷</span>
+            </div>
+        </div>
+
+        <!-- DESKTOP HEADER -->
+        <div class="amazon-header desktop-only">
+            <div class="nav-left">
+                <span class="amazon-logo">amazon<span class="logo-accent">.in</span></span>
+                <div class="nav-location" onclick={openAddressModal} style="cursor: pointer;" title="Click to update delivery location">
+                    <span class="location-sub">Deliver to {currentUserName}</span>
+                    <span class="location-main">{currentLocation}</span>
+                </div>
+            </div>
+            <div class="nav-fill">
+                <div class="search-box">
+                    <select class="category-select" onchange={handleCategorySelect}>
+                        <option value="All">All Categories</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Audio & Headphones">Audio & Headphones</option>
+                        <option value="Wearables">Wearables</option>
+                        <option value="Footwear">Footwear</option>
+                    </select>
+                    <input type="text" placeholder="Search Amazon.in" class="search-input"/>
+                    <button class="search-btn">🔍</button>
+                </div>
+            </div>
+            <div class="nav-right">
+                <div class="nav-item" onclick={openAuthModal}>
+                    <span class="line-1">Hello, {currentUserName}</span>
+                    <span class="line-2">Account & Lists ▾</span>
+                </div>
+                <div class="nav-item" onclick={handleOrdersClick}>
+                    <span class="line-1">Returns</span>
+                    <span class="line-2">& Orders</span>
+                </div>
+                <div class="cart-btn" onclick={openCartModal}>
+                    <span class="cart-icon">🛒</span>
+                    <span class="cart-count">{cartCount}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SUB NAV -->
+        <div class="amazon-subnav">
+            <span data-cat="All" onclick={handleCategorySelect}>All</span>
+            <span data-cat="Electronics" onclick={handleCategorySelect}>Electronics</span>
+            <span data-cat="Fashion" onclick={handleCategorySelect}>Fashion</span>
+            <span data-cat="Wearables" onclick={handleCategorySelect}>Wearables</span>
+            <span data-cat="Footwear" onclick={handleCategorySelect}>Footwear</span>
+            <span data-cat="Audio & Headphones" onclick={handleCategorySelect}>Audio & Headphones</span>
+            <span class="highlight-deal">🔥 Today's Deals</span>
+        </div>
+
+        <!-- MAIN BODY -->
+        <div class="main-body">
+            <div class="filter-sidebar desktop-only">
+                <h3>Category</h3>
+                <ul>
+                    <li class={isCategoryAll} data-cat="All" onclick={handleCategorySelect}>All Products</li>
+                    <li data-cat="Electronics" onclick={handleCategorySelect}>Electronics</li>
+                    <li data-cat="Audio & Headphones" onclick={handleCategorySelect}>Audio & Headphones</li>
+                    <li data-cat="Wearables" onclick={handleCategorySelect}>Wearables</li>
+                    <li data-cat="Footwear" onclick={handleCategorySelect}>Footwear</li>
+                </ul>
+                <h3 style="margin-top: 20px;">Price Filter</h3>
+                <input type="range" min="1000" max="50000" value={maxPriceFilter} oninput={handlePriceChange}/>
+                <div>Max Price: ₹{maxPriceFilter}</div>
+            </div>
+
+            <div class="catalog-content">
+                <div class="results-header desktop-only">
+                    <h2>Showing Products ({filteredProducts.length})</h2>
+                </div>
+
+                <div class="product-grid">
+                    <template for:each={filteredProducts} for:item="prod">
+                        <div key={prod.id} class="product-card" data-id={prod.id} onclick={openPdpModal}>
+                            <div class="img-container">
+                                <img src={prod.imageUrl} alt={prod.title}/>
+                            </div>
+                            <div class="product-info">
+                                <template if:true={prod.badge}>
+                                    <div class="badge-wrapper">
+                                        <span class="badge best-seller">{prod.badge}</span>
+                                    </div>
+                                </template>
+
+                                <div class="product-title">{prod.title}</div>
+
+                                <div class="rating-row">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-count">({prod.ratingCount})</span>
+                                </div>
+
+                                <div class="price-row">
+                                    <span class="currency">₹</span>
+                                    <span class="price">{prod.price}</span>
+                                    <span class="mrp">₹{prod.mrp}</span>
+                                    <span class="discount">({prod.discount})</span>
+                                </div>
+
+                                <button class="add-to-cart-btn" data-id={prod.id} onclick={handleAddToCart}>
+                                    Add to cart
+                                </button>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= MOBILE BOTTOM NAVIGATION BAR ================= -->
+        <div class="mobile-bottom-nav">
+            <div class="nav-bar-item">
+                <span class="b-icon">🏠</span>
+                <span>Home</span>
+            </div>
+            <div class="nav-bar-item" onclick={openAuthModal}>
+                <span class="b-icon">👤</span>
+                <span>You</span>
+            </div>
+            <div class="nav-bar-item">
+                <span class="b-icon">🪙</span>
+                <span>Wallet</span>
+            </div>
+            <div class="nav-bar-item" onclick={openCartModal}>
+                <span class="b-icon">🛒</span>
+                <span class="b-badge">{cartCount}</span>
+                <span>Cart</span>
+            </div>
+            <div class="nav-bar-item">
+                <span class="b-icon">☰</span>
+                <span>Menu</span>
+            </div>
+        </div>
+
+        <!-- ================= LOGIN / AUTH MODAL ================= -->
+        <template if:true={isAuthModalOpen}>
+            <div class="modal-backdrop" onclick={closeAuthModal}>
+                <div class="auth-modal-content" onclick={stopPropagation}>
+                    <span class="close-btn" onclick={closeAuthModal}>&times;</span>
+                    
+                    <div class="auth-tabs">
+                        <span class={signInTabClass} onclick={switchToSignIn}>Sign In</span>
+                        <span class={registerTabClass} onclick={switchToRegister}>Create Account</span>
+                    </div>
+
+                    <div class="auth-form">
+                        <template if:true={isRegisterMode}>
+                            <label>Your Name</label>
+                            <input type="text" class="auth-input" placeholder="First and last name"/>
+                        </template>
+
+                        <label>Email or Mobile Phone Number</label>
+                        <input type="text" class="auth-input" placeholder="Enter email or phone"/>
+                        
+                        <label>Password</label>
+                        <input type="password" class="auth-input" placeholder="At least 6 characters"/>
+
+                        <button class="auth-continue-btn" onclick={handleAuthSubmit}>{authButtonLabel}</button>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <!-- ================= CART & TWO-STEP CHECKOUT FLOW MODAL ================= -->
+        <template if:true={isCartModalOpen}>
+            <div class="modal-backdrop" onclick={closeCartModal}>
+                <div class="cart-modal-content" onclick={stopPropagation}>
+                    <span class="close-btn" onclick={closeCartModal}>&times;</span>
+                    
+                    <!-- STEP 1: CART SUMMARY OVERVIEW -->
+                    <template if:false={isCheckoutStep}>
+                        <h2>Shopping Cart Overview</h2>
+                        <div class="cart-summary-box">
+                            <p>Subtotal ({cartCount} items): <b style="font-size: 18px; color: #B12704;">₹{cartTotalPrice}</b></p>
+                            <p style="font-size: 13px; color: #007600; margin-top: 5px;">✔ Part of your order qualifies for FREE Delivery.</p>
+                        </div>
+                        <div class="cart-items-preview">
+                            <p><b>Delivery Address:</b> {currentLocation}</p>
+                            <p><b>Items Selected:</b> Polaroid Camera, Wireless Headphones & more</p>
+                        </div>
+                        <button class="auth-continue-btn" style="margin-top: 20px; width: 100%; text-align: center;" onclick={proceedToPayment}>
+                            Proceed to Checkout
+                        </button>
+                    </template>
+
+                    <!-- STEP 2: SELECT PAYMENT METHOD -->
+                    <template if:true={isCheckoutStep}>
+                        <h2>Select a Payment Method</h2>
+                        <div class="cart-summary-box" style="padding: 10px; margin-bottom: 10px;">
+                            <p>Total Payable: <b>₹{cartTotalPrice}</b></p>
+                        </div>
+
+                        <div class="payment-options-list">
+                            <label class="payment-option-item">
+                                <input type="radio" name="payment" checked onchange={selectPaymentMethod} data-method="UPI"/>
+                                <span class="pay-icon">📱</span>
+                                <div>
+                                    <b>UPI Apps (Google Pay, PhonePe, Paytm)</b>
+                                    <p class="pay-sub">Instant payment using UPI ID or QR code</p>
+                                </div>
+                            </label>
+
+                            <label class="payment-option-item">
+                                <input type="radio" name="payment" onchange={selectPaymentMethod} data-method="Card"/>
+                                <span class="pay-icon">💳</span>
+                                <div>
+                                    <b>Credit / Debit / ATM Card</b>
+                                    <p class="pay-sub">Visa, MasterCard, RuPay, Maestro</p>
+                                </div>
+                            </label>
+
+                            <label class="payment-option-item">
+                                <input type="radio" name="payment" onchange={selectPaymentMethod} data-method="NetBanking"/>
+                                <span class="pay-icon">🏦</span>
+                                <div>
+                                    <b>Net Banking</b>
+                                    <p class="pay-sub">All major Indian banks supported</p>
+                                </div>
+                            </label>
+
+                            <label class="payment-option-item">
+                                <input type="radio" name="payment" onchange={selectPaymentMethod} data-method="COD"/>
+                                <span class="pay-icon">📦</span>
+                                <div>
+                                    <b>Cash on Delivery (COD)</b>
+                                    <p class="pay-sub">Pay cash when your order arrives</p>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div style="display: flex; gap: 10px; margin-top: 20px;">
+                            <button class="auth-continue-btn" style="background: #e7e7e7; border-color: #d5d9d9;" onclick={goBackToCart}>
+                                Back
+                            </button>
+                            <button class="auth-continue-btn" style="flex-grow: 1;" onclick={handlePlaceOrder}>
+                                Use this payment method & Place Order
+                            </button>
+                        </div>
+                    </template>
+
+                </div>
+            </div>
+        </template>
+
+        <!-- ================= ORDER HISTORY MODAL ================= -->
+        <template if:true={isOrderModalOpen}>
+            <c-order-history-modal onclose={closeOrderModal}></c-order-history-modal>
+        </template>
+
+        <!-- ================= ADDRESS SELECTION MODAL ================= -->
+        <template if:true={isAddressModalOpen}>
+            <div class="modal-backdrop" onclick={closeAddressModal}>
+                <div class="auth-modal-content" onclick={stopPropagation} style="width: 450px;">
+                    <span class="close-btn" onclick={closeAddressModal}>&times;</span>
+                    
+                    <h2>Choose your location</h2>
+                    <p style="font-size: 13px; color: #565959; margin-bottom: 15px;">
+                        Delivery options and delivery speeds may vary for different locations
+                    </p>
+
+                    <div class="auth-form">
+                        <label>Enter an Indian pincode or city</label>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="text" class="auth-input" value={tempPincode} oninput={handlePincodeInput} placeholder="e.g. 751024 or Mumbai" style="flex-grow: 1; margin-top: 0;"/>
+                            <button class="auth-continue-btn" style="margin-top: 0; padding: 0 15px;" onclick={applyPincode}>Apply</button>
+                        </div>
+
+                        <div style="margin: 15px 0; text-align: center; color: #565959; font-size: 12px;">or</div>
+
+                        <button class="auth-continue-btn" style="background: #e3e6e6; border-color: #d5d9d9; width: 100%; text-align: center; color: #0f1111;" onclick={useCurrentLocation}>
+                            📍 Detect my current location
+                        </button>
+
+                        <div style="margin-top: 20px;">
+                            <label style="font-size: 13px; font-weight: bold; margin-bottom: 8px; display: block;">Or select from saved addresses:</label>
+                            <div class="payment-options-list">
+                                <label class="payment-option-item" onclick={selectSavedAddress} data-city="Bhubaneswar" data-pin="751024" style="cursor: pointer;">
+                                    <input type="radio" name="address" checked/>
+                                    <div>
+                                        <b>{currentUserName} - Bhubaneswar</b>
+                                        <p class="pay-sub">Odisha, 751024 (Default)</p>
+                                    </div>
+                                </label>
+                                <label class="payment-option-item" onclick={selectSavedAddress} data-city="Bangalore" data-pin="560001" style="cursor: pointer;">
+                                    <input type="radio" name="address"/>
+                                    <div>
+                                        <b>{currentUserName} - Bangalore</b>
+                                        <p class="pay-sub">Karnataka, 560001</p>
+                                    </div>
+                                </label>
+                                <label class="payment-option-item" onclick={selectSavedAddress} data-city="New Delhi" data-pin="110001" style="cursor: pointer;">
+                                    <input type="radio" name="address"/>
+                                    <div>
+                                        <b>{currentUserName} - New Delhi</b>
+                                        <p class="pay-sub">Delhi, 110001</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+    </div>
+</template>

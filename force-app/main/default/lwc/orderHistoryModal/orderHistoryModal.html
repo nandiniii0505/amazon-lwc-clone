@@ -1,0 +1,57 @@
+<template>
+    <div class="modal-backdrop">
+        <div class="order-modal-content">
+            <span class="close-btn" onclick={closeModal}>&times;</span>
+            
+            <h2>Your Orders</h2>
+            
+            <!-- Order Filter Tabs -->
+            <div class="order-tabs">
+                <span class="order-tab active">Orders</span>
+                <span class="order-tab">Buy Again</span>
+                <span class="order-tab">Not Yet Shipped</span>
+                <span class="order-tab">Cancelled Orders</span>
+            </div>
+
+            <!-- Search inside orders -->
+            <div class="order-search-box">
+                <input type="text" placeholder="Search all orders" class="order-search-input"/>
+                <button class="order-search-btn">Search Orders</button>
+            </div>
+
+            <!-- Sample Order Item Card (Jaise Amazon me hota hai) -->
+            <div class="order-card-container">
+                <div class="order-header-strip">
+                    <div class="order-header-info">
+                        <span><b>ORDER PLACED</b><br>10 March 2026</span>
+                        <span><b>TOTAL</b><br>₹15,999</span>
+                        <span><b>SHIP TO</b><br>Nandini Mishra</span>
+                    </div>
+                    <div class="order-id-right">
+                        <span>ORDER # 406-7892341-5672109</span>
+                        <a href="#">View order details</a> | <a href="#">Invoice</a>
+                    </div>
+                </div>
+
+                <div class="order-body-strip">
+                    <div class="order-img-box">
+                        <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f" alt="Product"/>
+                    </div>
+                    <div class="order-desc-box">
+                        <h4>Polaroid Instant Vintage Camera (Grey)</h4>
+                        <p class="delivered-status"><b>Delivered</b> on 13 March 2026</p>
+                        <p class="sub-text">Your package was handed directly to a resident.</p>
+                        <button class="buy-again-btn">🔄 Buy it again</button>
+                        <button class="track-btn">Track package</button>
+                    </div>
+                    <div class="order-action-box">
+                        <button class="action-link-btn">View or edit order</button>
+                        <button class="action-link-btn">Return or replace items</button>
+                        <button class="action-link-btn">Write a product review</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</template>

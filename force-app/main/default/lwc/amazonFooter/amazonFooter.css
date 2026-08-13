@@ -1,0 +1,90 @@
+.amazon-footer {
+    background-color: #232f3e;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    width: 100%;
+}
+
+.back-to-top {
+    background-color: #37475a;
+    text-align: center;
+    padding: 15px 0;
+    color: #ffffff;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.back-to-top:hover {
+    background-color: #485769;
+}
+
+.footer-links-container {
+    display: flex;
+    justify-content: flex-start; /* Isse content left ki taraf shift ho jayega */
+    padding: 30px 20px;          /* Mobile ke liye padding thodi kam kar di */
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    text-align: left;            /* Text ko left-aligned rakhne ke liye */
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 25px;
+    text-align: left;            /* Columns ke andar ka text bhi left align rahega */
+}
+
+.footer-column h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column li {
+    color: #dddddd;
+    font-size: 13px;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+.footer-column li:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom-bar {
+    border-top: 1px solid #3a4553;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0;
+    gap: 40px;
+}
+
+.footer-logo {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: -1px;
+}
+
+.footer-selectors {
+    display: flex;
+    gap: 15px;
+}
+
+.selector-btn {
+    border: 1px solid #848688;
+    padding: 6px 18px;
+    border-radius: 3px;
+    font-size: 13px;
+    cursor: pointer;
+}
